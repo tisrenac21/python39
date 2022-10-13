@@ -1,25 +1,25 @@
-# # input 함수
-# # 변수명 = input(입력메시지)
-# # input 함수로 입력받은 내용은 기본적으로 문자로 취급
-#
-# # 성적처리 프로그램 v2
-# # 이름과 국어, 영어, 수학의 점수를 입력받아 총점, 평균을 출력함.
-# name = input('이름을 입력하시오 : ')
-# kor = int(input('국어 점수를 입력하시오 : '))
-# eng = int(input('영어 점수를 입력하시오 : '))
-# mat = int(input('수학 점수를 입력하시오 : '))
-# tot = kor + eng + mat
-# avg = tot / 3
-#
-# print(f'이름 : {name:s}')
-# print(f'국어: {kor:d}, 영어: {eng:d}, 수학: {mat:d}')
-# print(f'총점: {tot:d}, 평균 {avg:.2f}')
-#
-# fat = float(input('지방의 그램을 입력하세요 : '))
-# carbohydrate = float(input('탄수화물의 그램을 입력하세요 : '))
-# protein = float(input('단백질의 그램을 입력하세요 : '))
-# kcal = (fat*9)+(protein*4)+(carbohydrate*4)
-# print(f'총칼로리 : {kcal:,.2f} cal')
+# input 함수
+# 변수명 = input(입력메시지)
+# input 함수로 입력받은 내용은 기본적으로 문자로 취급
+
+# 성적처리 프로그램 v2
+# 이름과 국어, 영어, 수학의 점수를 입력받아 총점, 평균을 출력함.
+name = input('이름을 입력하시오 : ')
+kor = int(input('국어 점수를 입력하시오 : '))
+eng = int(input('영어 점수를 입력하시오 : '))
+mat = int(input('수학 점수를 입력하시오 : '))
+tot = kor + eng + mat
+avg = tot / 3
+
+print(f'이름 : {name:s}')
+print(f'국어: {kor:d}, 영어: {eng:d}, 수학: {mat:d}')
+print(f'총점: {tot:d}, 평균 {avg:.2f}')
+
+fat = float(input('지방의 그램을 입력하세요 : '))
+carbohydrate = float(input('탄수화물의 그램을 입력하세요 : '))
+protein = float(input('단백질의 그램을 입력하세요 : '))
+kcal = (fat*9)+(protein*4)+(carbohydrate*4)
+print(f'총칼로리 : {kcal:,.2f} cal')
 
 # 성적관리 프로그램의 메뉴화면 작성 1
 print('성적 처리 프로그램 v1')

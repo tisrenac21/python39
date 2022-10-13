@@ -1,7 +1,16 @@
 # 20
 
 
-# 22
+# 22. number 변수에 30과 35가 입력된다고 가정할 때
+# 각각의 if문의 결과는 무엇인가요?
+
+number = 30
+if number % 2 == 0: print('입력한 값은 짝수입니다')
+print('입력한 값은 홀수입니다')
+
+if number % 2 == 0: print('입력한 값은 짝수입니다')
+else: print('입력한 값은 홀수입니다')
+
 
 
 # 26 - 연봉/결혼 여부 세금 계산
@@ -33,4 +42,14 @@ else:
     print(f'{year}년은 윤년이 아닙니다.')
 
 
-# 25 - 복권 발행 프로그램
+# 25 - 복권 발행 프로그램 v1
+# 난수 생성 시 random 모듈의 randrange(범위)
+import random as rnd
+
+yourkey = int(input('복권번호는?'))
+lottokey = rnd.randrange(111, 1000)
+
+if yourkey == lottokey:
+    print('복권 당첨!! - 상금 10,000,000d원!!')
+else:
+    print('아쉽지만 다음 기회를..')
