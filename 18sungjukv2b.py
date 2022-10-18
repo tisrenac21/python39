@@ -1,16 +1,11 @@
-# 성적데이터 저장할 변수 선언
-names = []
-kors = []
-engs = []
-mats = []
-tots = []
-avgs = []
-grds = []
+# 2차원 리스트를 이용한 성적 처리 프로그램
 
+# 성적데이터 저장할 변수 선언
+sjs = []
 
 # 프로그램 메뉴 출력을 위한 변수 선언
 main_menu = f'''
-성적 처리 프로그램 v2
+성적 처리 프로그램 v2b
 ------------------------
 1. 성적 데이터 추가
 2. 성적 데이터 조회
@@ -25,12 +20,12 @@ main_menu = f'''
 while True:
     print(main_menu)
     menu = input('=> 메뉴를 선택하세요 : ')
-    
+
     if menu == '0':
         print('프로그램을 종료합니다.')
         break
-        
-    elif menu == '1':       # 성적데이터 입력, 성적처리
+
+    elif menu == '1':  # 성적데이터 입력, 성적처리
         print(' == 학생 및 성적 정보 입력 == ')
         name = input('이름: ')
         kor = int(input('국어 성적: '))
@@ -52,27 +47,29 @@ while True:
         elif avg >= 60:
             grd = '양'
 
-        names.append(name)
-        kors.append(kor)
-        engs.append(eng)
-        mats.append(mat)
-        tots.append(tot)
-        avgs.append(avg)
-        grds.append(grd)
+        sj = []
+        sj.append(name)
+        sj.append(kor)
+        sj.append(eng)
+        sj.append(mat)
+        sj.append(tot)
+        sj.append(avg)
+        sj.append(grd)
+
+        sjs.append(sj)
 
         input('성적 데이터 추가 완료!')
-        
-    elif menu == '2':       # 이름, 국어, 영어, 수학만 출력
+
+    elif menu == '2':  # 이름, 국어, 영어, 수학만 출력
         hdr = '이름\t\t총점\t\t등급\n'
         hdr += '----------------------'
         print(hdr)
 
-        for i in range(len(names)):
-            print(f'{names[i]}      {tots[i]}       {grds[i]}')
-
+        for sj in sjs:
+            print(f'{sj[0]}      {sj[4]}         {sj[6]}')
 
         input('성적 데이터 조회 완료!')
-        
+
     elif menu == '3':
         search = input('검색할 학생의 이름을 입력하세요.')
         cnt = 0
@@ -96,15 +93,13 @@ while True:
                     print(f'{names[i]}     {kors[i]}       {engs[i]}       {mats[i]}        {tots[i]}       '
                           f'{avgs[i]}       {grds[i]}')
 
-
         input('성적 데이터 상세조회 완료!')
-        
+
     elif menu == '4':
         print('성적 데이터 수정 완료!')
-        
+
     elif menu == '5':
         print('성적 데이터 삭제 완료!')
-        
+
     else:
         print('잘못된 번호를 입력했습니다.')
-        
