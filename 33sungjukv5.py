@@ -14,15 +14,15 @@ while True:
     menu = sjv5.displayMenu()
 
     if menu == '1':
-        sjv5.addSungJuk(sjs)
+        sjv5.addSungJuk()
     elif menu == '2':
-        sjv5.readSungJuk(sjs)
+        sjv5.readSungJuk()
     elif menu == '3':
-        sjv5.readOneSungJuk(sjs)
+        sjv5.readOneSungJuk()
     elif menu == '4':
-        sjv5.modifySungJuk(sjs)
+        sjv5.modifySungJuk()
     elif menu == '5':
-        sjv5.removeSungJuk(sjs)
+        sjv5.removeSungJuk()
     elif menu == '0':
         break
     else:

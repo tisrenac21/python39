@@ -1,3 +1,5 @@
+sjs = []
+
 def inputSungJuk():
     name = input('이름: ')
     kor = int(input('국어 성적: '))
@@ -8,7 +10,7 @@ def inputSungJuk():
 
     return sj
 
-def addSungJuk(sjs):
+def addSungJuk():
     print(' == 학생 및 성적 정보 입력 == ')
     # 성적 데이터 입력 받기
     sj = inputSungJuk()
@@ -56,7 +58,7 @@ def compluteSungjuk(sj):
     return tot, avg, grd
 
 
-def readSungJuk(sjs):
+def readSungJuk():
     hdr = '이름\t\t총점\t\t등급\n'
     hdr += '----------------------'
     print(hdr)
@@ -65,7 +67,7 @@ def readSungJuk(sjs):
         print(f'{sj["name"]}        {sj["tot"]}         {sj["grd"]}')
 
 
-def readOneSungJuk(sjs):
+def readOneSungJuk():
     name = input('조회할 학생의 이름은?')
     sj = None
     hdr = '이름\t국어\t영어\t수학\t총점\t평균\t등급\n'
@@ -78,7 +80,7 @@ def readOneSungJuk(sjs):
         print(sj.get(k), '\n', end='\t\t')
 
 
-def modifySungJuk(sjs):
+def modifySungJuk():
     name = input('수정할 학생 이름: ')
 
     idx = None
@@ -103,7 +105,7 @@ def modifySungJuk(sjs):
     sjs[idx] = sj
 
 
-def removeSungJuk(sjs):
+def removeSungJuk():
     name = input('삭제할 데이터의 학생 이름을 입력하세요: ')
 
     idx = None
