@@ -71,3 +71,5 @@ with open('member.dat', encoding='UTF-8') as f:
 # 앞 예제에서 파일로 저장학 성적데이터를
 # 다음과 같은 형태로 화면에 출력
 # 이름 : abc, 국어 : 99, 영어 : 87, 수학 : 76
+
+# github
