@@ -62,7 +62,7 @@ class SungJukVO:
 
 class SungJukService:
     @staticmethod
-    def read_sungjuk(self):
+    def read_sungjuk():
         name = input('이름은 ?')
         kor = int(input('국어는 ?'))
         eng = int(input('영어는 ?'))
@@ -71,7 +71,7 @@ class SungJukService:
         return SungJukVO(name, kor, eng, mat)
 
     @staticmethod
-    def compute_sungjuk(self, sj):
+    def compute_sungjuk(sj):
         sj.tot = sj.kor + sj.eng + sj.mat
 
         sj.avg = sj.tot / 3
@@ -99,4 +99,4 @@ print(sj)
 # setter 접근 제한하기 = inspect 모듈 이용
 # SungJukService 의 computeSungJuk 함수에 의해서만
 # tot, avg, grd 를 변경할 수 있도록 제한
-sj.tot = 11     # computerSungJuk 함수 없이 개별적으로 변경 가능
+# sj.tot = 11     # computerSungJuk 함수 없이 개별적으로 변경 가능

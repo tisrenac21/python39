@@ -8,7 +8,6 @@ class SungJukVO:
         self.__avg = 0.0
         self.__grd = '가'
 
-    # __str__ : 멤버변수들의 값을 문자열화해서
     def __str__(self):
         result = f'{self.__name} {self.__kor} {self.__eng} {self.__mat} {self.__tot} {self.__avg} {self.__grd}'
         return result
