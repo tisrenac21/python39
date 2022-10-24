@@ -1,4 +1,4 @@
-import pymysql
+import dbinfo as db
 
 
 
@@ -24,6 +24,15 @@ def addSungJuk():
     sj = sj + [tot, avg, grd]
 
     # 처리된 성적데이터를 sungjuk 테이블에 저장
+    conn, cur = db.openConn()
+    sql = 'insert into sungjuk (name, kor, eng, mat, tot, avg, grd) values (%s, %s, %s, %s, %s, %s, %s)'
+
+    cur.execute(sql, sj)
+    conn.commit()
+
+    db.closeConn(cur, conn)
+
+
     # pass
 
 def displayMenu():
@@ -66,29 +75,58 @@ def readSungJuk():
     print(hdr)
 
     # 성적테이블에서 이름/국어/영어/수학만 select해서 출력
+    conn, cur = db.openConn()
+
+    sql = 'select name, tot, grd from sungjuk order by sjno'
+    cur.execute(sql)
+    rows = cur.fetchall()
+
+    db.closeConn(conn, cur)
+
+    result = ''
+    for row in rows:
+        result += f'{row[0]}    {row[1]}    {row[2]} '
+
+    print(result)
 
 
 def readOneSungJuk():
     name = input('조회할 학생의 이름은?')
 
 
-    hdr = '이름\t국어\t영어\t수학\t총점\t평균\t등급\n'
+    hdr = '번호\t이름\t국어\t영어\t수학\t총점\t평균\t등급\n'
     hdr += '------------------------------------------------------'
     print(hdr)
 
-   # 입력한 학생이름으로 설적테이블을 조회해서 조회된 결과를 출력
 
+
+   # 입력한 학생이름으로 설적테이블을 조회해서 조회된 결과를 출력
+    conn, cur = db.openConn()
+
+    sql = 'select * from sungjuk where name = %s'
+    cur.execute(sql, [name])
+    row = cur.fetchone()
+
+    db.closeConn(conn, cur)
+
+    result = f'{row[0]}    {row[1]}    {row[2]}    {row[3]}    {row[4]}    {row[5]}    {row[6]:.1f}    {row[7]} '
+
+    print(result)
 
 def modifySungJuk():
     name = input('수정할 학생 이름: ')
 
     # 수정할 학생 이름으로 기존데이터 조회
-
+    conn, cur = db.openConn()
+    sql = 'select name, kor, eng, mat from sungjuk where name = %s'
+    cur.execute(sql, [name])
+    sj = cur.fetchone()
+    db.closeConn(conn, cur)
 
     # 새로운(기존) 값을 입력받음
-    kor = int(input(f'새로운 국어는? ()'))
-    eng = int(input(f'새로운 영어는? ()'))
-    mat = int(input(f'새로운 수학는? ()'))
+    kor = int(input(f'새로운 국어는? ({sj[1]})'))
+    eng = int(input(f'새로운 영어는? ({sj[2]})'))
+    mat = int(input(f'새로운 수학는? ({sj[3]})'))
 
     # 다시 성적 처리
     sj = [name, kor, eng, mat]
@@ -96,8 +134,29 @@ def modifySungJuk():
     sj = sj + [tot, avg, grd]
 
     # 새롭게 입력된 성적데이터를 기존 성적데이틀에 수정 반영
+    conn, cur = db.openConn()
+    sql = 'update sungjuk set kor=%(kr)s, eng=%(en)s, mat=%(mt)s, tot=%(tt)s, avg=%(av)s, grd=%(gd)s where name = %(nm)s'
+    params = dict(nm = sj[0], kr = sj[1], en = sj[2], mt = sj[3], tt = sj[4], av = sj[5], gd = sj[6] )
+    cur.execute(sql, params)
+    cnt = cur.rowcount
+    conn.commit()
+    
+    db.closeConn()
+    
+    if cnt > 0: print('성공적으로 수정 했따')
 
 def removeSungJuk():
     name = input('삭제할 데이터의 학생 이름을 입력하세요: ')
 
     # 삭제할 학생이름을 입력받아 성적테이블에서 해당 학생 데이터 삭제
+    conn, cur = db.openConn()
+
+    sql = 'delete from sungjuk where name = %s'
+    cur.execute(sql, [name])
+    cnt = cur.rowcount
+    conn.commit()
+
+    db.closeConn(conn, cur)
+
+    if cnt > 0:
+        print('성공적으로 삭제되었습니다.')

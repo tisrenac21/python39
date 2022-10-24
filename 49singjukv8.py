@@ -9,24 +9,24 @@ sjs = []
 
 # 파일에 저장된 성적데이터 불러오기
 # 프로그램 시작전 데이터 초기화
-import sungjukv7lib as sjv7c
+from SungJukV8Lib import SungJukV8Lib as sjv8
 
 # 파일에 저장된 성적데이터 불러오기
 while True:
 
     # 메뉴 표시 및 값 입력
-    menu = sjv7c.displayMenu()
+    menu = sjv8.display_menu()
 
     if menu == '1':
-        sjv7c.addSungJuk()
+        sjv8.add_sungjuk()
     elif menu == '2':
-        sjv7c.readSungJuk()
+        sjv8.read_sungjuk()
     elif menu == '3':
-        sjv7c.readOneSungJuk()
+        sjv8.read_one_sungjuk()
     elif menu == '4':
-        sjv7c.modifySungJuk()
+        sjv8.modify_sungjuk()
     elif menu == '5':
-        sjv7c.removeSungJuk()
+        sjv8.remove_sungjuk()
     elif menu == '0':
         break
     else:
